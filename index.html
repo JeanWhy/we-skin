@@ -66,6 +66,18 @@
     font-size:18px;letter-spacing:.32em;font-weight:500;
     text-decoration:none;color:var(--ink);flex-shrink:0;
   }
+  .nav-toggle{
+    display:none;background:none;border:0;cursor:pointer;
+    width:36px;height:36px;flex-shrink:0;
+    flex-direction:column;justify-content:center;gap:5px;padding:0;
+  }
+  .nav-toggle span{
+    display:block;height:1.5px;width:22px;background:var(--ink);
+    margin:0 auto;transition:transform .25s ease, opacity .2s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
   .lang{
     display:flex;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;
     font-size:10px;letter-spacing:.1em;flex-shrink:0;
@@ -329,6 +341,15 @@
   .pill.outline{background:#fff;color:#9c7c2f;border-color:#c4a14e}
   .pill:hover{opacity:.78}
 
+  /* hero studio video */
+  .hero-video{
+    display:block;width:100%;height:auto;
+    aspect-ratio:848/478;object-fit:cover;
+    border-radius:8px;
+    margin:30px 0 4px;
+    background:#f4ede4;
+  }
+
   /* About section (added) */
   .about{padding:40px 0 8px;text-align:center}
   .about-eyebrow{
@@ -422,6 +443,33 @@
     .lang button{padding:4px 6px}
   }
 
+  /* Mobile: collapse nav into a hamburger dropdown */
+  @media (max-width:640px){
+    .nav-toggle{display:flex}
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;margin:0;
+      flex-direction:column;align-items:stretch;gap:0;
+      background:rgba(255,255,255,.98);
+      backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line);
+      padding:4px 24px 16px;
+      max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+      transition:max-height .3s ease, opacity .2s ease, padding .3s ease;
+    }
+    .nav-links.open{max-height:360px;opacity:1;pointer-events:auto}
+    .nav-links a{
+      font-size:13px;letter-spacing:.14em;
+      padding:13px 2px;width:auto;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-links a.nav-book{
+      margin-top:14px;padding:13px 16px;border-bottom:0;
+      text-align:center;font-size:12px;letter-spacing:.16em;
+    }
+    .lang{margin-top:14px;align-self:flex-start;font-size:11px}
+    .lang button{padding:6px 10px}
+  }
+
   /* Print-clean focus rings */
   button:focus-visible, a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 </style>
@@ -431,7 +479,7 @@
 <header>
   <div class="wrap top">
     <a class="brand" href="#home">WE&nbsp;SKIN</a>
-    <nav class="nav-links" aria-label="Primary">
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#about" data-i18n="navAbout">About</a>
       <a href="#services" data-i18n="navServices">Services</a>
       <a href="#contact" data-i18n="navContact">Contact</a>
@@ -441,6 +489,9 @@
         <button data-lang="mn" aria-pressed="false">MN</button>
       </div>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -463,6 +514,11 @@
     <a id="heroBook" class="pill solid" href="#" data-i18n="heroBook">Book Now</a>
     <a class="pill outline" href="#services" data-i18n="heroServices">Our Services</a>
   </div>
+
+  <!-- STUDIO VIDEO (autoplay, muted, looping) -->
+  <video class="hero-video" autoplay muted loop playsinline aria-label="WE SKIN studio treatment">
+    <source src="studio.mp4" type="video/mp4">
+  </video>
 
   <!-- ABOUT (above services) -->
   <section class="about" id="about" aria-labelledby="about-title">
@@ -986,6 +1042,23 @@
     }
   } catch(e){}
   setLang(initial);
+
+  /* mobile hamburger menu */
+  (function(){
+    var t = document.getElementById('navToggle');
+    var n = document.getElementById('navLinks');
+    if(!t || !n) return;
+    t.addEventListener('click', function(){
+      var open = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    n.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        n.classList.remove('open');
+        t.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
 </script>
 </body>
 </html>
