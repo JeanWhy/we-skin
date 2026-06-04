@@ -741,6 +741,11 @@
           <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
         </svg>
       </a>
+      <a id="fbLink" href="" target="_blank" rel="noopener" aria-label="Facebook" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
     </div>
     <div>Chatswood, NSW</div>
   </footer>
@@ -770,6 +775,9 @@
 
   // Instagram URL — leave blank "" to hide the IG icon in the footer
   const INSTAGRAM_URL = "";   // e.g. "https://instagram.com/weskin.au"
+
+  // Facebook page URL — leave blank "" to hide the FB icon in the footer
+  const FACEBOOK_URL = "https://www.facebook.com/weskinus/";
 
   // Main "Book online" CTA → general services list on Square
   // (per-item Book → links are hardcoded in each <article> with their own service URL)
@@ -821,6 +829,13 @@
   if (INSTAGRAM_URL) {
     igLink.href = INSTAGRAM_URL;
     igLink.style.display = 'flex';
+  }
+
+  // Wire Facebook footer link
+  const fbLink = document.getElementById('fbLink');
+  if (FACEBOOK_URL) {
+    fbLink.href = FACEBOOK_URL;
+    fbLink.style.display = 'flex';
   }
 
   // Hide placeholder hints if real images successfully load
