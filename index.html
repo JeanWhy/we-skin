@@ -235,6 +235,17 @@
   /* balance the two clips: lift the darker one, ease the brighter/cooler one */
   .studio-photos .ph:nth-child(1) video{filter:brightness(1.35) contrast(.96)}
   .studio-photos .ph:nth-child(2) video{filter:brightness(.93) saturate(.82)}
+  .studio-photos .ph .play-btn{
+    position:absolute;inset:0;margin:auto;
+    width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;
+    background:rgba(255,255,255,.85);
+    display:flex;align-items:center;justify-content:center;
+    transition:opacity .25s ease, transform .2s ease, background .2s ease;
+    z-index:2;
+  }
+  .studio-photos .ph .play-btn svg{width:20px;height:20px;margin-left:2px;fill:var(--ink)}
+  .studio-photos .ph .play-btn:hover{transform:scale(1.06);background:#fff}
+  .studio-photos .ph.playing .play-btn{opacity:0;pointer-events:none}
   .studio-photos .ph .ph-hint{
     position:absolute;inset:0;
     display:flex;align-items:center;justify-content:center;
@@ -696,10 +707,16 @@
   <!-- Suggested: treatment room, products on shelf, towels & ambient detail, close-up of beds -->
   <div class="studio-photos" aria-label="Studio videos">
     <figure class="ph">
-      <video src="massage1.mp4" autoplay muted loop playsinline aria-label="WE SKIN massage treatment"></video>
+      <video src="massage1.mp4" muted loop playsinline preload="metadata" poster="massage1-poster.jpg" aria-label="WE SKIN massage treatment"></video>
+      <button class="play-btn" type="button" aria-label="Play video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
     </figure>
     <figure class="ph">
-      <video src="massage2.mp4" autoplay muted loop playsinline aria-label="WE SKIN massage treatment"></video>
+      <video src="massage2.mp4" muted loop playsinline preload="metadata" poster="massage2-poster.jpg" aria-label="WE SKIN massage treatment"></video>
+      <button class="play-btn" type="button" aria-label="Play video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
     </figure>
   </div>
 
@@ -1067,6 +1084,20 @@
         n.classList.remove('open');
         t.setAttribute('aria-expanded', 'false');
       });
+    });
+  })();
+
+  /* studio videos: tap the play button (or the video) to play/pause */
+  (function(){
+    document.querySelectorAll('.studio-photos .ph').forEach(function(ph){
+      var v = ph.querySelector('video');
+      var btn = ph.querySelector('.play-btn');
+      if(!v) return;
+      function toggle(){ if(v.paused){ v.play(); } else { v.pause(); } }
+      if(btn) btn.addEventListener('click', toggle);
+      v.addEventListener('click', toggle);
+      v.addEventListener('play', function(){ ph.classList.add('playing'); });
+      v.addEventListener('pause', function(){ ph.classList.remove('playing'); });
     });
   })();
 </script>
