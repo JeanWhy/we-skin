@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>WE SKIN — Curated Skin Treatments, Chatswood</title>
+<meta name="description" content="WE SKIN at i-Beauty Chatswood. A curated menu of skin treatments — from a quiet facial to advanced care. Book online." />
+<meta name="theme-color" content="#ffffff" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="WE SKIN — Curated Skin Treatments" />
+<meta property="og:description" content="Curated skin treatments at i-Beauty Chatswood, NSW." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* === EDIT HERE === */
+  /* Paste your Square Appointments booking URL inside the quotes below. */
+  /* Until you paste it, the Book button will alert a friendly placeholder. */
+  /* ================ */
+
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#5a5a5a;
+    --ink-faint:#9a9a9a;
+    --line:#ececec;
+    --bg:#ffffff;
+    --bg-soft:#fafafa;
+    --accent:#1a1a1a;
+    --radius:2px;
+    --max:480px;          /* mobile-first card width on desktop */
+    --pad:24px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    font-size:15px;
+    letter-spacing:.01em;
+  }
+  .serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;letter-spacing:.02em}
+
+  /* Layout: phone-shaped column, centered on desktop */
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+  /* Top bar */
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(10px);
+    -webkit-backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    height:52px;
+  }
+  .brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;letter-spacing:.32em;font-weight:500;
+  }
+  .lang{
+    display:flex;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+    font-size:11px;letter-spacing:.12em;
+  }
+  .lang button{
+    background:transparent;border:0;padding:6px 10px;cursor:pointer;
+    color:var(--ink-faint);font-family:inherit;font-weight:500;
+  }
+  .lang button.on{background:var(--ink);color:#fff}
+
+  /* Hero */
+  .hero{padding:48px 0 32px;text-align:center}
+  .eyebrow{
+    font-size:11px;letter-spacing:.32em;color:var(--ink-faint);
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;font-size:34px;line-height:1.15;letter-spacing:.01em;
+    margin-bottom:18px;
+  }
+  .hero h1 em{font-style:italic;color:var(--ink-soft)}
+  .hero p.lede{
+    color:var(--ink-soft);font-size:14px;max-width:320px;margin:0 auto;
+  }
+
+  /* Hairline divider */
+  .rule{height:1px;background:var(--line);margin:32px auto;width:40px}
+
+  /* Menu (5 items) */
+  .menu{padding:28px 0 8px}
+  .menu-title{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;
+    text-align:center;margin-bottom:6px;
+  }
+  .menu-sub{
+    text-align:center;font-size:11px;letter-spacing:.24em;
+    color:var(--ink-faint);text-transform:uppercase;margin-bottom:24px;
+  }
+
+  .menu-section{margin-top:36px}
+  .menu-section:first-of-type{margin-top:0}
+  .section-label{
+    font-size:10px;letter-spacing:.32em;font-weight:600;
+    text-transform:uppercase;color:var(--ink);
+    padding-bottom:10px;
+    border-bottom:1px solid var(--ink);
+  }
+
+  .item{
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:6px;
+    position:relative;
+  }
+  .menu-section .item:first-of-type{border-top:0}
+  .menu-section .item:last-of-type{border-bottom:1px solid var(--line)}
+
+  .item .row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  }
+  .item h3{
+    font-family:'Cormorant Garamond',serif;font-weight:500;
+    font-size:18px;letter-spacing:.01em;line-height:1.3;
+  }
+  .item .price{
+    font-family:'Cormorant Garamond',serif;color:var(--ink);
+    font-size:18px;letter-spacing:.02em;white-space:nowrap;
+  }
+  .item .dur{
+    font-size:11px;letter-spacing:.18em;color:var(--ink-faint);
+    text-transform:uppercase;
+  }
+  .item .desc{
+    font-size:13px;color:var(--ink-soft);line-height:1.55;margin-top:4px;
+  }
+  .item .book-link{
+    align-self:flex-start;margin-top:8px;
+    font-size:11px;letter-spacing:.24em;font-weight:500;
+    text-transform:uppercase;color:var(--ink);
+    text-decoration:none;border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+  .item .book-link:hover{opacity:.6}
+
+  .badge{
+    display:inline-block;
+    font-size:9px;letter-spacing:.28em;font-weight:600;
+    text-transform:uppercase;
+    background:var(--ink);color:#fff;
+    padding:3px 8px;border-radius:2px;
+    margin-bottom:6px;align-self:flex-start;
+  }
+
+  .value{
+    font-size:12px;color:var(--ink-soft);text-align:center;
+    margin:28px 0 20px;letter-spacing:.04em;
+  }
+  .value strong{color:var(--ink);font-weight:500}
+
+  .studio-note{
+    text-align:center;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-faint);
+    margin-bottom:24px;
+  }
+  .studio-note strong{color:var(--ink-soft);font-weight:500}
+
+  /* === IMAGE PLACEHOLDERS === */
+  /* Hero image — full-bleed within column */
+  .hero-image{
+    width:calc(100% + (var(--pad) * 2));
+    margin:0 calc(var(--pad) * -1) 28px;
+    aspect-ratio:4/5;
+    background:#f4ede4;            /* warm cream while empty */
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-image img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .hero-image .ph-hint{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:8px;color:#b8a994;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+    text-align:center;padding:0 24px;
+  }
+  .hero-image .ph-hint svg{width:32px;height:32px;opacity:.6}
+
+  /* Studio photo grid — 2-up */
+  .studio-photos{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px;
+    margin:32px 0 8px;
+  }
+  .studio-photos .ph{
+    aspect-ratio:1/1;background:#f4ede4;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;position:relative;
+  }
+  .studio-photos .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .studio-photos .ph .ph-hint{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    color:#b8a994;
+  }
+  .studio-photos .ph .ph-hint svg{width:24px;height:24px;opacity:.5}
+
+  /* === WHATSAPP FLOATING BUTTON === */
+  .fab-whatsapp{
+    position:fixed;right:18px;bottom:18px;z-index:50;
+    width:54px;height:54px;border-radius:50%;
+    background:#25D366;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);
+    text-decoration:none;
+    transition:transform .2s;
+  }
+  .fab-whatsapp:hover{transform:scale(1.06)}
+  .fab-whatsapp svg{width:28px;height:28px}
+
+  /* === FOOTER SOCIAL ICONS === */
+  .socials{
+    display:flex;gap:14px;justify-content:center;margin:14px 0 4px;
+  }
+  .socials a{
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);text-decoration:none;
+    transition:color .2s,border-color .2s;
+  }
+  .socials a:hover{color:var(--ink);border-color:var(--ink)}
+  .socials a svg{width:16px;height:16px}
+
+  /* Trust block — products / brands */
+  .trust{
+    margin-top:36px;padding:24px 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  .trust-label{
+    font-size:10px;letter-spacing:.32em;font-weight:600;
+    text-transform:uppercase;color:var(--ink);margin-bottom:10px;
+  }
+  .trust-body{
+    font-size:13px;color:var(--ink-soft);line-height:1.6;
+    max-width:340px;margin:0 auto;
+  }
+  .trust-ask{
+    display:inline-block;margin-top:10px;
+    font-size:11px;letter-spacing:.16em;color:var(--ink-faint);
+    text-transform:uppercase;
+  }
+
+  /* CTA */
+  .cta-wrap{padding:8px 0 8px}
+  .btn{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;height:54px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-size:13px;letter-spacing:.24em;font-weight:500;text-transform:uppercase;
+    border-radius:var(--radius);border:0;cursor:pointer;
+    font-family:inherit;
+    transition:opacity .2s;
+  }
+  .btn:hover{opacity:.85}
+  .btn.ghost{
+    background:transparent;color:var(--ink);border:1px solid var(--ink);
+    margin-top:10px;
+  }
+  .note{
+    text-align:center;font-size:11px;color:var(--ink-faint);
+    margin-top:12px;letter-spacing:.04em;
+  }
+
+  /* Info row */
+  .info{
+    margin:48px 0 8px;
+    border-top:1px solid var(--line);
+    padding-top:32px;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  .info-item{display:flex;flex-direction:column;gap:4px}
+  .info-item .k{
+    font-size:10px;letter-spacing:.28em;color:var(--ink-faint);
+    text-transform:uppercase;
+  }
+  .info-item .v{font-size:14px;color:var(--ink);line-height:1.55}
+  .info-item a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+
+  /* Footer */
+  footer{
+    margin-top:48px;padding:24px 0 32px;
+    border-top:1px solid var(--line);
+    text-align:center;color:var(--ink-faint);font-size:11px;letter-spacing:.12em;
+  }
+  footer .brand-sm{
+    font-family:'Cormorant Garamond',serif;
+    letter-spacing:.32em;font-size:13px;color:var(--ink);margin-bottom:6px;
+  }
+
+  /* Reviews placeholder (hidden until you add real ones) */
+  .reviews-soon{
+    text-align:center;font-size:11px;color:var(--ink-faint);
+    letter-spacing:.16em;text-transform:uppercase;
+    padding:18px 0;border-top:1px solid var(--line);margin-top:8px;
+  }
+
+  /* === CLIENT REVIEWS === */
+  .reviews{margin-top:36px}
+  .reviews-head{text-align:center;margin-bottom:8px}
+  .reviews-eyebrow{
+    font-size:10px;letter-spacing:.32em;font-weight:600;
+    text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;
+  }
+  .reviews-title{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;
+  }
+  .review{
+    padding:22px 0;border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:9px;
+  }
+  .review:last-of-type{border-bottom:1px solid var(--line)}
+  .review .stars{font-size:11px;letter-spacing:.34em;color:var(--ink)}
+  .review .quote{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:18px;line-height:1.45;color:var(--ink);letter-spacing:.01em;
+  }
+  .review .who{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .review .who strong{color:var(--ink-soft);font-weight:500}
+
+  /* Reduce padding bumps on very small screens */
+  @media (max-width:380px){
+    :root{--pad:20px}
+    .hero h1{font-size:30px}
+  }
+
+  /* Print-clean focus rings */
+  button:focus-visible, a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div class="brand">WE&nbsp;SKIN</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button class="on" data-lang="en" aria-pressed="true">EN</button>
+      <button data-lang="mn" aria-pressed="false">MN</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO IMAGE (replace src below with a real photo URL) -->
+  <!-- Suggested: close-up of facial treatment, hand-on-skin, or studio detail. Portrait orientation (4:5). -->
+  <figure class="hero-image" id="heroImage">
+    <!-- When you have a photo, paste its URL into src below. Until then, the cream placeholder shows. -->
+    <img src="" alt="" onerror="this.style.display='none'">
+    <div class="ph-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/>
+        <circle cx="12" cy="13" r="3.5"/>
+      </svg>
+      <span>Hero photo</span>
+    </div>
+  </figure>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow" data-i18n="eyebrow">Skin Studio · Chatswood</div>
+    <h1>
+      <span data-i18n="h1a">Glowing skin,</span><br>
+      <em data-i18n="h1b">deeply rested.</em>
+    </h1>
+    <p class="lede" data-i18n="lede">
+      A curated menu of skin treatments — from a quiet facial to advanced care.
+    </p>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- MENU -->
+  <section class="menu" aria-labelledby="menu-title">
+    <h2 id="menu-title" class="menu-title" data-i18n="menuTitle">Treatment Menu</h2>
+    <div class="menu-sub" data-i18n="menuSub">All prices in AUD</div>
+
+    <!-- === SKIN === -->
+    <div class="menu-section">
+      <div class="section-label" data-i18n="secSkin">Skin</div>
+
+      <article class="item">
+        <span class="badge" data-i18n="badgeSignature">Signature</span>
+        <div class="row">
+          <h3 data-i18n="s1Title">Skin + Relaxation Complete</h3>
+          <span class="price">$120</span>
+        </div>
+        <p class="dur" data-i18n="s1Dur">90 minutes</p>
+        <p class="desc" data-i18n="s1Desc">Deep cleansing, peeling, facial acupressure, deep hydration mask + 30-min relaxation massage (head, neck, shoulders, arms, legs).</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/R6CS5VGFBI5WXUYX374LFV6I" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s2Title">Skin &amp; Relaxation</h3>
+          <span class="price">$90</span>
+        </div>
+        <p class="dur" data-i18n="s2Dur">60 minutes</p>
+        <p class="desc" data-i18n="s2Desc">Deep cleansing, peeling, foam &amp; water-based cleansing, steam, facial acupressure massage, deep hydration mask.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/ZZMFEESCOBVWMKUZGYARF6OP" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s3Title">Carboxy Treatment</h3>
+          <span class="price">$160</span>
+        </div>
+        <p class="dur" data-i18n="s3Dur">60 minutes</p>
+        <p class="desc" data-i18n="s3Desc">Uses CO₂ to improve circulation, boost collagen, and enhance skin elasticity. Refreshes dull or tired skin.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/ED6ZUGZYDMBMWTZSBWYMQVLZ" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s4Title">IPL Treatment</h3>
+          <span class="price">$250</span>
+        </div>
+        <p class="dur" data-i18n="s4Dur">60 minutes</p>
+        <p class="desc" data-i18n="s4Desc">Intense Pulsed Light therapy for pigmentation, redness, sun damage, and uneven tone. Promotes a clearer, more even complexion.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/7IJKD2K247GW66WVDOI7SRNN" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s5Title">Nano Eyebrows</h3>
+          <span class="price">$380</span>
+        </div>
+        <p class="dur" data-i18n="s5Dur">60 minutes</p>
+        <p class="desc" data-i18n="s5Desc">Semi-permanent nano-blading for natural, hair-like strokes. Long-lasting shape and symmetry.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/I57VE2FIMNSSHRXLQNXIBZDP" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+    </div>
+
+    <!-- === RELAXATION === -->
+    <div class="menu-section">
+      <div class="section-label" data-i18n="secRelax">Relaxation</div>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s6Title">Full Body Massage</h3>
+          <span class="price">$80</span>
+        </div>
+        <p class="dur" data-i18n="s6Dur">60 minutes</p>
+        <p class="desc" data-i18n="s6Desc">Relieves muscle tension, improves circulation, and reduces stress.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/UWVL7PI2GWOSFQS3CIYFXIZP" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s7Title">Targeted Area Massage</h3>
+          <span class="price">$50</span>
+        </div>
+        <p class="dur" data-i18n="s7Dur">30 minutes</p>
+        <p class="desc" data-i18n="s7Desc">Focused on tension points — neck, shoulders, or back — for quick relief.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/C6H5HQMI6OJ5PVCOFYLEBP7T" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+    </div>
+
+    <!-- === WAXING === -->
+    <div class="menu-section">
+      <div class="section-label" data-i18n="secWax">Waxing</div>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s8Title">Bikini Wax</h3>
+          <span class="price">$45</span>
+        </div>
+        <p class="dur" data-i18n="s8Dur">30 minutes</p>
+        <p class="desc" data-i18n="s8Desc">Gentle waxing for the bikini area.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/JXJNGPDXKXHVP525KK2ZUTZF" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+
+      <article class="item">
+        <div class="row">
+          <h3 data-i18n="s9Title">Body Waxing</h3>
+          <span class="price" data-i18n="s9Price">from $15</span>
+        </div>
+        <p class="dur" data-i18n="s9Dur">30 minutes</p>
+        <p class="desc" data-i18n="s9Desc">Underarms $15 · Half arms $30 · Half legs $35.</p>
+        <a class="book-link" href="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/Z26QVAPO7FPDEDYSV4WRN7DZ" target="_blank" rel="noopener" data-i18n="bookLink">Book →</a>
+      </article>
+    </div>
+
+    <p class="value" data-i18n="value">
+      <strong>Honest pricing.</strong> No upsell — book the treatment that's right for you.
+    </p>
+
+    <div class="cta-wrap">
+      <a id="bookBtn" class="btn" href="#" data-i18n="bookBtn">Book online</a>
+      <a class="btn ghost" id="callBtn" href="tel:" data-i18n="callBtn">Call the studio</a>
+      <div class="note" data-i18n="note">Instant confirmation via Square</div>
+    </div>
+  </section>
+
+  <!-- TRUST — products / brands -->
+  <section class="trust" aria-labelledby="trust-label">
+    <div id="trust-label" class="trust-label" data-i18n="trustLabel">Professional skincare</div>
+    <p class="trust-body" data-i18n="trustBody">
+      Treatments performed with European professional skincare lines.
+    </p>
+    <span class="trust-ask" data-i18n="trustAsk">Ask in-studio about retail</span>
+  </section>
+
+  <!-- CLIENT REVIEWS — sample feedback. Replace quotes & names with REAL client reviews before launch. -->
+  <section class="reviews" aria-labelledby="reviews-title">
+    <div class="reviews-head">
+      <div class="reviews-eyebrow" data-i18n="revEyebrow">Loved by regulars</div>
+      <h2 id="reviews-title" class="reviews-title" data-i18n="revTitle">From our regulars</h2>
+    </div>
+
+    <article class="review">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p class="quote" data-i18n="rev1Quote">“My skin has never looked calmer — I leave glowing every single time.”</p>
+      <div class="who" data-i18n="rev1Who"><strong>Sophie L.</strong> · Skin &amp; Relaxation</div>
+    </article>
+
+    <article class="review">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p class="quote" data-i18n="rev2Quote">“Honest advice and no upsell — just genuinely good treatments. I'm a regular now.”</p>
+      <div class="who" data-i18n="rev2Who"><strong>Mina K.</strong> · Carboxy Treatment</div>
+    </article>
+
+    <article class="review">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <p class="quote" data-i18n="rev3Quote">“The most relaxing hour of my week. The studio feels like a little sanctuary.”</p>
+      <div class="who" data-i18n="rev3Who"><strong>Tara S.</strong> · Full Body Massage</div>
+    </article>
+  </section>
+
+  <!-- STUDIO PHOTOS (replace src below with real photos) -->
+  <!-- Suggested: treatment room, products on shelf, towels & ambient detail, close-up of beds -->
+  <div class="studio-photos" aria-label="Studio photos">
+    <figure class="ph">
+      <img src="" alt="" onerror="this.style.display='none'">
+      <div class="ph-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/>
+          <circle cx="12" cy="13" r="3.5"/>
+        </svg>
+      </div>
+    </figure>
+    <figure class="ph">
+      <img src="" alt="" onerror="this.style.display='none'">
+      <div class="ph-hint" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M3 8a2 2 0 0 1 2-2h2.5l1.5-2h6l1.5 2H19a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/>
+          <circle cx="12" cy="13" r="3.5"/>
+        </svg>
+      </div>
+    </figure>
+  </div>
+
+  <!-- INFO -->
+  <section class="info">
+    <div class="info-item">
+      <span class="k" data-i18n="kLocation">Studio</span>
+      <span class="v">
+        <span data-i18n="studioName" style="display:block;font-weight:500;margin-bottom:2px">Inside i-Beauty Chatswood</span>
+        <a href="https://maps.google.com/?q=438+Victoria+Ave+Chatswood+NSW" target="_blank" rel="noopener">
+          438 Victoria Ave, Chatswood, NSW
+        </a>
+      </span>
+    </div>
+    <div class="info-item">
+      <span class="k" data-i18n="kHours">Hours</span>
+      <span class="v" data-i18n="hours">By appointment only</span>
+    </div>
+    <div class="info-item">
+      <span class="k" data-i18n="kContact">Contact</span>
+      <span class="v">
+        <a href="tel:+61433521272">0433 521 272</a>
+      </span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="brand-sm">WE&nbsp;SKIN</div>
+    <div class="socials" id="socials">
+      <a id="igLink" href="" target="_blank" rel="noopener" aria-label="Instagram" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+    <div>Chatswood, NSW</div>
+  </footer>
+
+</main>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a class="fab-whatsapp" id="waBtn" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" style="display:none">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1.6-.7-2.6-1.3-3.6-3-.3-.5.2-.5.7-1.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1.2 1.2-1 2.9.1 4.3 2.1 3 4.3 4.3 7.3 5.1.7.2 1.3.3 1.7.2.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3C4.4 14.9 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/>
+  </svg>
+</a>
+
+<script>
+  /* =========================================================
+     CONFIG — edit these values to customize the page
+     ========================================================= */
+  // Square Appointments booking URL (main "Book online" CTA)
+  const SQUARE_BOOKING_URL = "https://app.squareup.com/appointments/book/ikf36klpxgjxem/LAC5TF3K9JNRV/start";
+
+  // Studio phone (used by Call button AND WhatsApp button)
+  const STUDIO_PHONE = "+61 433 521 272";
+
+  // WhatsApp number — leave blank to hide the floating button.
+  // Use international format without + (e.g. "61433521272")
+  const WHATSAPP_NUMBER = "61433521272";
+
+  // Instagram URL — leave blank "" to hide the IG icon in the footer
+  const INSTAGRAM_URL = "";   // e.g. "https://instagram.com/weskin.au"
+
+  // Main "Book online" CTA → general services list on Square
+  // (per-item Book → links are hardcoded in each <article> with their own service URL)
+  const bookBtn = document.getElementById('bookBtn');
+  if (SQUARE_BOOKING_URL) {
+    bookBtn.href = SQUARE_BOOKING_URL;
+    bookBtn.target = "_blank";
+    bookBtn.rel = "noopener";
+  } else {
+    bookBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("Booking link not set yet. Paste your Square URL into SQUARE_BOOKING_URL in this file.");
+    });
+  }
+
+  // Wire phone button
+  const callBtn = document.getElementById('callBtn');
+  if (STUDIO_PHONE) {
+    callBtn.href = "tel:" + STUDIO_PHONE.replace(/\s+/g,'');
+  } else {
+    callBtn.style.display = 'none'; // hide if no phone yet
+  }
+
+  // Wire WhatsApp floating button
+  const waBtn = document.getElementById('waBtn');
+  if (WHATSAPP_NUMBER) {
+    waBtn.href = "https://wa.me/" + WHATSAPP_NUMBER.replace(/\D+/g,'');
+    waBtn.style.display = 'flex';
+  }
+
+  // Wire Instagram footer link
+  const igLink = document.getElementById('igLink');
+  if (INSTAGRAM_URL) {
+    igLink.href = INSTAGRAM_URL;
+    igLink.style.display = 'flex';
+  }
+
+  // Hide placeholder hints if real images successfully load
+  document.querySelectorAll('.hero-image img, .studio-photos .ph img').forEach(img => {
+    img.addEventListener('load', () => {
+      if (img.naturalWidth > 0) {
+        const hint = img.parentElement.querySelector('.ph-hint');
+        if (hint) hint.style.display = 'none';
+      }
+    });
+  });
+
+  /* =========================================================
+     LANGUAGE TOGGLE — English / Mongolian
+     ========================================================= */
+  const I18N = {
+    en: {
+      eyebrow: "Skin Studio · Chatswood",
+      h1a: "Glowing skin,",
+      h1b: "deeply rested.",
+      lede: "A curated menu of skin treatments — from a quiet facial to advanced care.",
+
+      menuTitle: "Treatment Menu",
+      menuSub: "All prices in AUD",
+      badgeSignature: "Signature",
+      bookLink: "Book →",
+
+      secSkin: "Skin",
+      secRelax: "Relaxation",
+      secWax: "Waxing",
+
+      s1Title: "Skin + Relaxation Complete",
+      s1Dur: "90 minutes",
+      s1Desc: "Deep cleansing, peeling, facial acupressure, deep hydration mask + 30-min relaxation massage (head, neck, shoulders, arms, legs).",
+
+      s2Title: "Skin & Relaxation",
+      s2Dur: "60 minutes",
+      s2Desc: "Deep cleansing, peeling, foam & water-based cleansing, steam, facial acupressure massage, deep hydration mask.",
+
+      s3Title: "Carboxy Treatment",
+      s3Dur: "60 minutes",
+      s3Desc: "Uses CO₂ to improve circulation, boost collagen, and enhance skin elasticity. Refreshes dull or tired skin.",
+
+      s4Title: "IPL Treatment",
+      s4Dur: "60 minutes",
+      s4Desc: "Intense Pulsed Light therapy for pigmentation, redness, sun damage, and uneven tone. Promotes a clearer, more even complexion.",
+
+      s5Title: "Nano Eyebrows",
+      s5Dur: "60 minutes",
+      s5Desc: "Semi-permanent nano-blading for natural, hair-like strokes. Long-lasting shape and symmetry.",
+
+      s6Title: "Full Body Massage",
+      s6Dur: "60 minutes",
+      s6Desc: "Relieves muscle tension, improves circulation, and reduces stress.",
+
+      s7Title: "Targeted Area Massage",
+      s7Dur: "30 minutes",
+      s7Desc: "Focused on tension points — neck, shoulders, or back — for quick relief.",
+
+      s8Title: "Bikini Wax",
+      s8Dur: "30 minutes",
+      s8Desc: "Gentle waxing for the bikini area.",
+
+      s9Title: "Body Waxing",
+      s9Dur: "30 minutes",
+      s9Price: "from $15",
+      s9Desc: "Underarms $15 · Half arms $30 · Half legs $35.",
+
+      value: "<strong>Honest pricing.</strong> No upsell — book the treatment that's right for you.",
+      bookBtn: "Book online",
+      callBtn: "Call the studio",
+      note: "Instant confirmation via Square",
+      trustLabel: "Professional skincare",
+      trustBody: "Treatments performed with European professional skincare lines.",
+      trustAsk: "Ask in-studio about retail",
+      reviewsSoon: "Reviews — coming soon",
+      revEyebrow: "Loved by regulars",
+      revTitle: "From our regulars",
+      rev1Quote: "“My skin has never looked calmer — I leave glowing every single time.”",
+      rev1Who: "<strong>Sophie L.</strong> · Skin & Relaxation",
+      rev2Quote: "“Honest advice and no upsell — just genuinely good treatments. I'm a regular now.”",
+      rev2Who: "<strong>Mina K.</strong> · Carboxy Treatment",
+      rev3Quote: "“The most relaxing hour of my week. The studio feels like a little sanctuary.”",
+      rev3Who: "<strong>Tara S.</strong> · Full Body Massage",
+      kLocation: "Studio",
+      studioName: "Inside i-Beauty Chatswood",
+      kHours: "Hours",
+      hours: "By appointment only",
+      kContact: "Contact"
+    },
+    mn: {
+      eyebrow: "Гоо сайхны студи · Chatswood",
+      h1a: "Гэрэлтэх арьс,",
+      h1b: "гүн амралт.",
+      lede: "Сонгомол арьс арчилгааны үйлчилгээ — энгийн нүүрний арчилгаанаас дэвшилтэт эмчилгээ хүртэл.",
+
+      menuTitle: "Үйлчилгээний цэс",
+      menuSub: "Бүх үнэ AUD-ээр",
+      badgeSignature: "Онцлох",
+      bookLink: "Захиалах →",
+
+      secSkin: "Арьс",
+      secRelax: "Тайвшрал",
+      secWax: "Үс зайлуулах",
+
+      s1Title: "Арьс + Тайвшралын иж бүрэн",
+      s1Dur: "90 минут",
+      s1Desc: "Гүн цэвэрлэгээ, хальсалгаа, нүүрний бариа, чийгшүүлэх маск + 30 минутын тайвшралын массаж (толгой, хүзүү, мөр, гар, хөл).",
+
+      s2Title: "Арьс ба Тайвшрал",
+      s2Dur: "60 минут",
+      s2Desc: "Гүн цэвэрлэгээ, хальсалгаа, хөөс ба усан суурьт цэвэрлэгээ, уур, нүүрний бариа массаж, чийгшүүлэх маск.",
+
+      s3Title: "Карбокси эмчилгээ",
+      s3Dur: "60 минут",
+      s3Desc: "CO₂ ашиглан цусны эргэлтийг сайжруулж, коллагенийг идэвхжүүлж, арьсны уян хатан чанарыг нэмэгдүүлнэ. Уйтгартай, ядарсан арьсыг сэргээнэ.",
+
+      s4Title: "IPL эмчилгээ",
+      s4Dur: "60 минут",
+      s4Desc: "Толбо, улайлт, нарны гэмтэл, өнгийн жигд бус байдалд зориулсан хүчтэй гэрлийн эмчилгээ. Илүү тунгалаг, жигд өнгийг бий болгоно.",
+
+      s5Title: "Нано хөмсөг",
+      s5Dur: "60 минут",
+      s5Desc: "Байгалийн үс шиг харагдах хагас байнгын нано хөмсөг. Удаан үргэлжлэх хэлбэр, тэгш хэм.",
+
+      s6Title: "Бүх биеийн массаж",
+      s6Dur: "60 минут",
+      s6Desc: "Булчингийн хөшингөөг тайлж, цусны эргэлтийг сайжруулан, стрессийг бууруулна.",
+
+      s7Title: "Тодорхой хэсгийн массаж",
+      s7Dur: "30 минут",
+      s7Desc: "Хүзүү, мөр, нуруу зэрэг хөших хэсгүүдэд зориулсан түргэн тайвшруулах массаж.",
+
+      s8Title: "Бикини зайлуулалт",
+      s8Dur: "30 минут",
+      s8Desc: "Бикини хэсгийн зөөлөн ваксалт.",
+
+      s9Title: "Биеийн ваксалт",
+      s9Dur: "30 минут",
+      s9Price: "$15-аас",
+      s9Desc: "Суга $15 · Хагас гар $30 · Хагас хөл $35.",
+
+      value: "<strong>Шударга үнэ.</strong> Дарамт байхгүй — танд тохирох үйлчилгээгээ сонгож захиалаарай.",
+      bookBtn: "Онлайн захиалга",
+      callBtn: "Студид залгах",
+      note: "Square-ээр тэр даруй баталгаажуулна",
+      trustLabel: "Мэргэжлийн арьс арчилгаа",
+      trustBody: "Үйлчилгээг Европын мэргэжлийн арьс арчилгааны брэндүүдээр гүйцэтгэдэг.",
+      trustAsk: "Худалдааны талаар студид асуугаарай",
+      reviewsSoon: "Сэтгэгдэл — удахгүй",
+      revEyebrow: "Тогтмол үйлчлүүлэгчид",
+      revTitle: "Үйлчлүүлэгчдийн сэтгэгдэл",
+      rev1Quote: "“Миний арьс хэзээ ч ийм тайван байгаагүй — болгондоо гэрэлтэж гардаг.”",
+      rev1Who: "<strong>Sophie L.</strong> · Арьс ба Тайвшрал",
+      rev2Quote: "“Шударга зөвлөгөө, дарамт байхгүй — үнэхээр сайн үйлчилгээ. Одоо би тогтмол үйлчлүүлдэг боллоо.”",
+      rev2Who: "<strong>Mina K.</strong> · Карбокси эмчилгээ",
+      rev3Quote: "“Долоо хоногийн хамгийн тайван цаг. Студи нь жижигхэн амар амгалан булан мэт.”",
+      rev3Who: "<strong>Tara S.</strong> · Бүх биеийн массаж",
+      kLocation: "Студи",
+      studioName: "i-Beauty Chatswood дотор",
+      kHours: "Цагийн хуваарь",
+      hours: "Зөвхөн урьдчилсан захиалгаар",
+      kContact: "Холбоо барих"
+    }
+  };
+
+  function setLang(lang){
+    document.documentElement.lang = lang === 'mn' ? 'mn' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (I18N[lang] && I18N[lang][key] != null) {
+        el.innerHTML = I18N[lang][key];
+      }
+    });
+    document.querySelectorAll('.lang button').forEach(b => {
+      const on = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    try { localStorage.setItem('weskin.lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.getAttribute('data-lang')));
+  });
+
+  // Restore last choice; default to browser language if Mongolian
+  let initial = 'en';
+  try {
+    const saved = localStorage.getItem('weskin.lang');
+    if (saved === 'mn' || saved === 'en') initial = saved;
+    else if ((navigator.language || '').toLowerCase().startsWith('mn')) initial = 'mn';
+  } catch(e){}
+  setLang(initial);
+</script>
+</body>
+</html>
