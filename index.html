@@ -784,6 +784,11 @@
           <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
         </svg>
       </a>
+      <a id="smsLink" href="" aria-label="Text us" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </a>
     </div>
     <div class="copyright">© 2026 WE&nbsp;SKIN · Chatswood, NSW</div>
   </footer>
@@ -853,6 +858,13 @@
     callBtn.href = "tel:" + STUDIO_PHONE.replace(/\s+/g,'');
   } else {
     callBtn.style.display = 'none'; // hide if no phone yet
+  }
+
+  // Wire SMS footer link
+  const smsLink = document.getElementById('smsLink');
+  if (smsLink && STUDIO_PHONE) {
+    smsLink.href = "sms:" + STUDIO_PHONE.replace(/\s+/g,'');
+    smsLink.style.display = 'flex';
   }
 
   // Wire WhatsApp floating button
