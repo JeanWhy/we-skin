@@ -860,10 +860,11 @@
     callBtn.style.display = 'none'; // hide if no phone yet
   }
 
-  // Wire SMS footer link
+  // Wire SMS footer link (with a pre-filled message)
   const smsLink = document.getElementById('smsLink');
   if (smsLink && STUDIO_PHONE) {
-    smsLink.href = "sms:" + STUDIO_PHONE.replace(/\s+/g,'');
+    const smsBody = encodeURIComponent("Hi WE SKIN, I'd like to book an appointment.");
+    smsLink.href = "sms:" + STUDIO_PHONE.replace(/\s+/g,'') + "?&body=" + smsBody;
     smsLink.style.display = 'flex';
   }
 
