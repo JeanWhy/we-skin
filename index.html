@@ -495,6 +495,29 @@
 
   /* Print-clean focus rings */
   button:focus-visible, a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+/* ===== QUIZ BUBBLE + MODAL ===== */
+.ws-qb{position:fixed;left:0;top:0;z-index:60;display:flex;align-items:center;gap:9px;background:#fff;color:#2b2b2b;border:1px solid #e7ddc4;border-radius:999px;padding:10px 15px 10px 11px;box-shadow:0 6px 22px rgba(156,124,47,.18);font-family:"Inter",system-ui,sans-serif;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;opacity:0;transform:translateY(12px) scale(.96);pointer-events:none;transition:opacity .35s ease,transform .35s ease,padding .3s ease,border-radius .3s ease}
+.ws-qb.show{opacity:1;transform:none;pointer-events:auto}
+.ws-qb .dot{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:17px;background:linear-gradient(135deg,#c4a14e,#9c7c2f);animation:ws-qb-float 4s ease-in-out infinite}
+.ws-qb .label{white-space:nowrap;max-width:240px;overflow:hidden;transition:max-width .3s ease,opacity .25s ease}
+.ws-qb .close{border:0;background:transparent;color:#bdb6a4;cursor:pointer;font-size:16px;line-height:1;padding:0 2px 0 4px;transition:max-width .3s,opacity .25s}
+.ws-qb .close:hover{color:#2b2b2b}
+.ws-qb.mini{padding:8px;border-radius:50%}
+.ws-qb.mini .label,.ws-qb.mini .close{max-width:0;opacity:0;padding:0;margin:0}
+.ws-qb.announce{animation:ws-qb-pop .5s cubic-bezier(.34,1.56,.64,1)}
+.ws-qb.announce::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 0 rgba(196,161,78,.5);animation:ws-qb-ring 1.5s ease-out 2}
+@keyframes ws-qb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes ws-qb-pop{0%{transform:scale(.82)}100%{transform:scale(1)}}
+@keyframes ws-qb-ring{0%{box-shadow:0 0 0 0 rgba(196,161,78,.5)}100%{box-shadow:0 0 0 18px rgba(196,161,78,0)}}
+.ws-modal{position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(43,40,35,.55);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.ws-modal.open{opacity:1;visibility:visible}
+.ws-modal .sheet{position:relative;width:min(480px,100%);height:min(88vh,820px);background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.32);transform:translateY(16px) scale(.985);transition:transform .3s ease}
+.ws-modal.open .sheet{transform:none}
+.ws-modal iframe{width:100%;height:100%;border:0;display:block}
+.ws-modal .x{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,255,255,.92);color:#2b2b2b;font-size:16px;line-height:1;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.ws-modal .x:hover{background:#fff}
+@media (max-width:520px){.ws-modal{padding:0}.ws-modal .sheet{width:100%;height:100%;border-radius:0}}
+@media (prefers-reduced-motion:reduce){.ws-qb .dot{animation:none}.ws-qb.announce,.ws-qb.announce::after{animation:none}.ws-modal,.ws-modal .sheet{transition:none}}
 </style>
 </head>
 <body>
@@ -905,6 +928,7 @@
   const I18N = {
     en: {
       navAbout: "About",
+      quizBubble: "What's your skin vibe? ✨",
       navServices: "Services",
       navContact: "Contact",
       navBook: "Book Now",
@@ -998,6 +1022,7 @@
     },
     mn: {
       navAbout: "Бидний тухай",
+      quizBubble: "Таны арьсны төрөл юу вэ? ✨",
       navServices: "Үйлчилгээ",
       navContact: "Холбоо барих",
       navBook: "Захиалах",
@@ -1157,6 +1182,86 @@
       v.addEventListener('pause', function(){ ph.classList.remove('playing'); });
     });
   })();
+</script>
+<!-- ===== QUIZ BUBBLE + MODAL ===== -->
+<a class="ws-qb" id="wsQb" href="quiz.html">
+  <span class="dot">✨</span>
+  <span class="label" data-i18n="quizBubble">What's your skin vibe? ✨</span>
+  <button class="close" id="wsQbClose" type="button" aria-label="Dismiss">×</button>
+</a>
+<div class="ws-modal" id="wsModal" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-label="Skin vibe quiz">
+    <button class="x" id="wsModalX" type="button" aria-label="Close">✕</button>
+    <iframe id="wsFrame" title="WE SKIN skin vibe quiz" loading="lazy"></iframe>
+  </div>
+</div>
+<script>
+(function(){
+  var qb=document.getElementById('wsQb'); if(!qb) return;
+  var cls=document.getElementById('wsQbClose');
+  var modal=document.getElementById('wsModal');
+  var frame=document.getElementById('wsFrame');
+  var modalX=document.getElementById('wsModalX');
+  var QUIZ_URL='quiz.html';
+
+  function openModal(){
+    if(!frame.getAttribute('data-loaded')){ frame.src=QUIZ_URL; frame.setAttribute('data-loaded','1'); }
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  qb.addEventListener('click',function(e){ e.preventDefault(); openModal(); });
+  modalX.addEventListener('click',closeModal);
+  modal.addEventListener('click',function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
+
+  try{ if(sessionStorage.getItem('wsQbClosed')==='1'){ qb.style.display='none'; return; } }catch(e){}
+
+  var ptr={x:window.innerWidth-150,y:window.innerHeight-130}, ptrType='mouse';
+  window.addEventListener('mousemove',function(e){ ptr={x:e.clientX,y:e.clientY}; ptrType='mouse'; },{passive:true});
+  function touch(e){ var t=e.touches&&e.touches[0]; if(t){ ptr={x:t.clientX,y:t.clientY}; ptrType='touch'; } }
+  window.addEventListener('touchstart',touch,{passive:true});
+  window.addEventListener('touchmove',touch,{passive:true});
+
+  var lastY=window.scrollY||0, idle=null, shown=false, announced=false, holdUntil=0;
+  function nearBottom(){ return (window.innerHeight+window.scrollY) >= (document.body.scrollHeight-220); }
+  function place(){
+    qb.classList.remove('mini');
+    var w=qb.offsetWidth||220,h=qb.offsetHeight||52,m=12,vw=window.innerWidth,vh=window.innerHeight,x,y;
+    if(ptrType==='touch'){ x=ptr.x-w/2; y=ptr.y-h-28; } else { x=ptr.x+16; y=ptr.y+18; }
+    x=Math.max(m,Math.min(x,vw-w-m)); y=Math.max(m,Math.min(y,vh-h-m));
+    qb.style.left=x+'px'; qb.style.top=y+'px';
+  }
+  function update(){
+    var y=window.scrollY||0, visible=y>480 && !nearBottom();
+    if(visible && !shown){
+      shown=true; place(); holdUntil=Date.now()+(announced?1600:3500);
+      if(!announced){ announced=true; qb.classList.add('announce'); setTimeout(function(){qb.classList.remove('announce');},2000); }
+    }
+    if(!visible) shown=false;
+    qb.classList.toggle('show',visible);
+    if(visible){
+      if(Date.now()<holdUntil){ qb.classList.remove('mini'); }
+      else {
+        if(y>lastY+4) qb.classList.add('mini'); else if(y<lastY-4) qb.classList.remove('mini');
+        clearTimeout(idle); idle=setTimeout(function(){qb.classList.remove('mini');},1100);
+      }
+    }
+    lastY=y;
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',function(){ if(shown) place(); update(); });
+  update();
+
+  cls.addEventListener('click',function(e){
+    e.preventDefault(); e.stopPropagation();
+    qb.classList.remove('show'); setTimeout(function(){qb.style.display='none';},380);
+    try{ sessionStorage.setItem('wsQbClosed','1'); }catch(err){}
+  });
+})();
 </script>
 </body>
 </html>

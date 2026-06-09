@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WE SKIN · Skin Vibe Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#c4a14e;
+    --gold-deep:#9c7c2f;
+    --ink:#2b2b2b;
+    --muted:#8a8a8a;
+    --line:#ece6da;
+    --bg:#ffffff;
+    --soft:#faf7f0;
+    --max:480px;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    min-height:100vh;
+    padding:22px 22px 40px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* top bar */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:6px;
+  }
+  .brand{
+    font-family:var(--serif);
+    font-size:19px;
+    letter-spacing:.14em;
+    color:var(--ink);
+  }
+  .brand span{color:var(--gold-deep)}
+  .langtoggle{
+    display:flex;
+    gap:2px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:3px;
+  }
+  .langtoggle button{
+    border:0;background:transparent;cursor:pointer;
+    font-family:var(--sans);font-size:11px;font-weight:600;
+    letter-spacing:.06em;color:var(--muted);
+    padding:4px 10px;border-radius:999px;transition:.2s;
+  }
+  .langtoggle button.on{background:var(--ink);color:#fff}
+
+  /* progress */
+  .progress{
+    display:flex;gap:6px;margin:20px 0 4px;
+    height:4px;
+  }
+  .progress i{
+    flex:1;background:var(--line);border-radius:999px;transition:.35s;
+  }
+  .progress i.done{background:var(--gold)}
+
+  /* card */
+  .stage{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14px 0}
+  .card{
+    opacity:0;transform:translateY(10px);
+    animation:rise .45s ease forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:600;margin-bottom:14px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:34px;line-height:1.12;letter-spacing:.01em;
+    margin-bottom:12px;
+  }
+  .lede{color:var(--muted);font-size:15px;margin-bottom:8px}
+  .qtext{
+    font-family:var(--serif);font-weight:500;
+    font-size:27px;line-height:1.2;margin-bottom:22px;
+  }
+
+  /* options */
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{
+    text-align:left;width:100%;cursor:pointer;
+    border:1px solid var(--line);background:var(--soft);
+    border-radius:14px;padding:15px 16px;
+    font-family:var(--sans);font-size:15px;color:var(--ink);
+    transition:.18s;
+  }
+  .opt:hover,.opt:focus-visible{
+    border-color:var(--gold);background:#fff;
+    transform:translateX(2px);outline:none;
+    box-shadow:0 2px 14px rgba(196,161,78,.14);
+  }
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    gap:8px;cursor:pointer;border:0;
+    font-family:var(--sans);font-weight:600;font-size:14px;
+    letter-spacing:.04em;padding:15px 20px;border-radius:999px;
+    width:100%;transition:.2s;
+  }
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:#000}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:var(--gold-deep)}
+  .btn-ghost{background:transparent;color:var(--muted);font-weight:500}
+  .btn-ghost:hover{color:var(--ink)}
+
+  /* result */
+  .result-emoji{font-size:54px;line-height:1;margin-bottom:8px}
+  .result-type{
+    font-family:var(--serif);font-weight:600;font-size:32px;
+    margin-bottom:10px;
+  }
+  .result-desc{font-size:15px;color:#555;margin-bottom:22px}
+  .reco{
+    background:var(--soft);border:1px solid var(--line);
+    border-radius:16px;padding:18px;text-align:center;margin-bottom:14px;
+  }
+  .reco .label{
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:600;margin-bottom:6px;
+  }
+  .reco .svc{font-family:var(--serif);font-size:23px;font-weight:500}
+  .reco .pair{font-size:12.5px;color:var(--muted);margin-top:7px}
+
+  /* capture */
+  .capture{
+    margin-top:18px;border-top:1px solid var(--line);padding-top:18px;
+  }
+  .capture p{font-size:13.5px;color:var(--muted);margin-bottom:12px;text-align:center}
+  .field{
+    width:100%;border:1px solid var(--line);border-radius:12px;
+    padding:13px 14px;font-family:var(--sans);font-size:14px;
+    margin-bottom:9px;background:var(--soft);
+  }
+  .field:focus{outline:none;border-color:var(--gold);background:#fff}
+  .thanks{
+    text-align:center;font-size:14px;color:var(--gold-deep);
+    font-weight:500;padding:8px 0;
+  }
+
+  .disclaimer{
+    font-size:11px;color:#b3ada0;text-align:center;margin-top:22px;
+    line-height:1.5;
+  }
+  .stack>*+*{margin-top:10px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">WE <span>SKIN</span></div>
+    <div class="langtoggle">
+      <button id="enBtn" class="on" onclick="setLang('en')">EN</button>
+      <button id="mnBtn" onclick="setLang('mn')">MN</button>
+    </div>
+  </div>
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <div class="stage" id="stage"></div>
+
+  <div class="disclaimer" data-i18n="disclaimer"></div>
+</div>
+
+<script>
+/* =========================================================
+   CONFIG — swap these for the real Square booking links.
+   Map each skin type to its matching service page.
+   Fallback = main WE SKIN booking page.
+   ========================================================= */
+const SQ="https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/";
+const BOOKING = {
+  fallback: "https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV", // WE SKIN main
+  dry:      SQ+"ED6ZUGZYDMBMWTZSBWYMQVLZ",  // Carboxy Treatment · $160
+  combo:    SQ+"ZZMFEESCOBVWMKUZGYARF6OP",  // Skin & Relaxation · $90
+  oily:     SQ+"I7255EP6NIBJXVC5MS5MQ75R",  // Acne Treatment · $150
+  sensitive:SQ+"R6CS5VGFBI5WXUYX374LFV6I"   // Skin + Relaxation Complete · $120
+};
+
+/* =========================================================
+   GOOGLE FORM — lead capture (no backend, stays on page).
+   See setup steps in chat. Fill in formId + the 4 entry IDs
+   from your Form's "Get pre-filled link".
+   ========================================================= */
+const GFORM = {
+  formId: "1FAIpQLSe21b7Vs-7wm7WiYIIwxSh4AvoxBmCSWmvARGaNfxeYAcWjyQ",  // WE SKIN lead form
+  entries:{
+    name:     "entry.806121370",    // Question 1: Name
+    contact:  "entry.1041636859",   // Question 2: Email or phone
+    skinType: "entry.76601972",     // Question 3: Skin type
+    lang:     "entry.655168476"     // Question 4: Language
+  }
+};
+
+/* =========================================================
+   CONTENT  (MN copy is a draft — Oko to review phrasing)
+   ========================================================= */
+const T = {
+  en:{
+    disclaimer:"Just for fun — not medical advice. We'll give the real recommendation in person.",
+    introEyebrow:"5 quick questions · just for fun",
+    introTitle:"What's your skin vibe?",
+    introLede:"Tap through five questions and meet your skin's little personality — plus the treatment it's craving.",
+    start:"Start the quiz",
+    qcount:(n)=>`Question ${n} of 5`,
+    resultEyebrow:"Your skin vibe",
+    recoLabel:"We'd love to pamper you with",
+    book:"Book now",
+    retake:"Try again",
+    captureP:"Want a personal tip? Leave your details and our therapist will reach out 💌",
+    name:"Name",
+    contact:"Email or phone",
+    send:"Send to WE SKIN",
+    thanks:"Got it! We'll be in touch soon 🌿",
+    questions:[
+      {q:"After cleansing, your skin feels…",a:[
+        {t:"Tight and thirsty",k:"dry"},
+        {t:"Pretty balanced",k:"combo"},
+        {t:"Shiny again fast",k:"oily"},
+        {t:"Stingy or a little red",k:"sensitive"}]},
+      {q:"By mid-afternoon, your T-zone is…",a:[
+        {t:"Still dry or flaky",k:"dry"},
+        {t:"Shiny, but cheeks stay dry",k:"combo"},
+        {t:"One happy oil slick",k:"oily"},
+        {t:"Easily irritated",k:"sensitive"}]},
+      {q:"Trying a new product usually means…",a:[
+        {t:"More dryness",k:"dry"},
+        {t:"Shine in just a few spots",k:"combo"},
+        {t:"Breakouts or clogged pores",k:"oily"},
+        {t:"Redness or itching",k:"sensitive"}]},
+      {q:"Your skin's main mood right now?",a:[
+        {t:"Dull and dehydrated",k:"dry"},
+        {t:"Mixed signals",k:"combo"},
+        {t:"Oily and congested",k:"oily"},
+        {t:"Touchy and reactive",k:"sensitive"}]},
+      {q:"Your dream me-time treat is…",a:[
+        {t:"A deep-moisture spa session",k:"dry"},
+        {t:"A custom balancing facial",k:"combo"},
+        {t:"A deep pore detox",k:"oily"},
+        {t:"Gentle, soothing care",k:"sensitive"}]}
+    ],
+    results:{
+      dry:{e:"🌵",t:"The Desert Rose",d:"Gorgeous but thirsty — your skin loves drinking up moisture. Time to refresh that dull, tired look.",svc:"Carboxy Treatment · $160",pair:"Add a Full Body Massage to make it a full unwind."},
+      combo:{e:"🌗",t:"The Best of Both",d:"Oily zones, dry zones — your skin keeps you on your toes. It thrives on balance.",svc:"Skin & Relaxation · $90",pair:"Relaxation massage included ✨"},
+      oily:{e:"✨",t:"The Glow Getter",d:"Plenty of natural glow (and a little extra shine). Your pores just want some attention.",svc:"Acne Treatment · $150",pair:"Add a Full Body Massage to de-stress."},
+      sensitive:{e:"🌸",t:"The Delicate Bloom",d:"Beautiful but easily flustered. Calm, gentle, soothing care is your love language.",svc:"Skin + Relaxation Complete · $120",pair:"Massage + back-relief included ✨"}
+    }
+  },
+  mn:{
+    disclaimer:"Зүгээр зугаатай тест — эмчийн зөвлөгөө биш. Бид биечлэн жинхэнэ зөвлөгөөг өгнө.",
+    introEyebrow:"5 хурдан асуулт · зугаатайгаар",
+    introTitle:"Таны арьсны төрөл юу вэ?",
+    introLede:"Таван асуултад хариулаад арьсныхаа жижигхэн зан чанарыг танина уу — мөн ямар арчилгаа хүсэж буйг нь мэдээрэй.",
+    start:"Тест эхлүүлэх",
+    qcount:(n)=>`${n} / 5 асуулт`,
+    resultEyebrow:"Таны арьсны төрөл",
+    recoLabel:"Бид танд санал болгох нь",
+    book:"Захиалах",
+    retake:"Дахин оролдох",
+    captureP:"Хувийн зөвлөгөө авах уу? Мэдээллээ үлдээгээрэй, манай мэргэжилтэн тантай холбогдоно 💌",
+    name:"Нэр",
+    contact:"Имэйл эсвэл утас",
+    send:"WE SKIN-д илгээх",
+    thanks:"Баярлалаа! Бид тантай удахгүй холбогдоно 🌿",
+    questions:[
+      {q:"Угаасны дараа таны арьс ямар санагддаг вэ?",a:[
+        {t:"Чангарч, ус хүсдэг",k:"dry"},
+        {t:"Нэлээд тэнцвэртэй",k:"combo"},
+        {t:"Удалгүй дахин гялалздаг",k:"oily"},
+        {t:"Хорсож, бага зэрэг улайдаг",k:"sensitive"}]},
+      {q:"Өдрийн дунд үед таны T-бүс…",a:[
+        {t:"Хуурайшсан хэвээр",k:"dry"},
+        {t:"Гялалзах ч хацар хуурай",k:"combo"},
+        {t:"Тослог болдог",k:"oily"},
+        {t:"Амархан цочдог",k:"sensitive"}]},
+      {q:"Шинэ бүтээгдэхүүн хэрэглэхэд ихэвчлэн…",a:[
+        {t:"Илүү хуурайшдаг",k:"dry"},
+        {t:"Зарим хэсэгт л гялалздаг",k:"combo"},
+        {t:"Батга, бөглөрөл гардаг",k:"oily"},
+        {t:"Улайж, загатнадаг",k:"sensitive"}]},
+      {q:"Одоо таны арьсны гол байдал?",a:[
+        {t:"Бүдэг, чийг дутагдсан",k:"dry"},
+        {t:"Холимог",k:"combo"},
+        {t:"Тослог, бөглөрсөн",k:"oily"},
+        {t:"Мэдрэмтгий, цочромтгой",k:"sensitive"}]},
+      {q:"Таны хүсэн хүлээдэг амралт?",a:[
+        {t:"Гүн чийгшүүлэх рашаан",k:"dry"},
+        {t:"Тохируулсан facial",k:"combo"},
+        {t:"Гүн цэвэрлэгээ",k:"oily"},
+        {t:"Зөөлөн, тайвшруулах арчилгаа",k:"sensitive"}]}
+    ],
+    results:{
+      dry:{e:"🌵",t:"Цөлийн Сарнай",d:"Үзэсгэлэнтэй ч ус хүсдэг — таны арьс чийг шингээх дуртай. Бүдэг, ядарсан арьсаа сэргээх цаг.",svc:"Carboxy Treatment · $160",pair:"Full Body Massage нэмбэл бүрэн амралт болно."},
+      combo:{e:"🌗",t:"Хоёр Талын Сайхан",d:"Тослог ба хуурай бүсүүд хосолсон — таны арьс үргэлж сонирхолтой. Тэнцвэр хэрэгтэй.",svc:"Skin & Relaxation · $90",pair:"Амралтын массаж багтсан ✨"},
+      oily:{e:"✨",t:"Гялалзагч",d:"Байгалийн гялбаа ихтэй (бага зэрэг илүү тослог). Нүх сүвэнд анхаарал хэрэгтэй.",svc:"Acne Treatment · $150",pair:"Full Body Massage нэмбэл тайвширна."},
+      sensitive:{e:"🌸",t:"Эмзэг Цэцэг",d:"Үзэсгэлэнтэй ч амархан цочдог. Зөөлөн, тайвшруулах арчилгаа таны сонголт.",svc:"Skin + Relaxation Complete · $120",pair:"Массаж + нурууны амралт багтсан ✨"}
+    }
+  }
+};
+
+/* ========================== state ========================== */
+let lang = "en";
+let step = -1;                 // -1 = intro
+let scores = {dry:0,combo:0,oily:0,sensitive:0};
+const stage = document.getElementById("stage");
+const progressEl = document.getElementById("progress");
+
+/* auto-detect Mongolian browsers (manual choice still wins) */
+(function(){
+  const langs=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();
+  if(langs.includes("mn")) lang="mn";
+})();
+
+function setLang(l){
+  lang=l;
+  document.getElementById("enBtn").classList.toggle("on",l==="en");
+  document.getElementById("mnBtn").classList.toggle("on",l==="mn");
+  document.documentElement.lang=l;
+  applyStatic();
+  render();
+}
+function applyStatic(){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(typeof T[lang][k]==="string") el.textContent=T[lang][k];
+  });
+}
+
+function buildProgress(){
+  progressEl.innerHTML="";
+  for(let i=0;i<5;i++){
+    const b=document.createElement("i");
+    if(step>i) b.classList.add("done");
+    progressEl.appendChild(b);
+  }
+  progressEl.style.visibility = (step>=0 && step<5) ? "visible" : "hidden";
+}
+
+function render(){
+  const t=T[lang];
+  buildProgress();
+
+  if(step===-1){ // intro
+    stage.innerHTML=`
+      <div class="card">
+        <div class="eyebrow">${t.introEyebrow}</div>
+        <h1>${t.introTitle}</h1>
+        <p class="lede">${t.introLede}</p>
+        <div style="margin-top:24px">
+          <button class="btn btn-primary" onclick="begin()">${t.start}</button>
+        </div>
+      </div>`;
+    return;
+  }
+
+  if(step<5){ // question
+    const Q=t.questions[step];
+    stage.innerHTML=`
+      <div class="card" key="${step}">
+        <div class="eyebrow">${t.qcount(step+1)}</div>
+        <div class="qtext">${Q.q}</div>
+        <div class="opts">
+          ${Q.a.map((o,i)=>`<button class="opt" onclick="answer('${o.k}')">${o.t}</button>`).join("")}
+        </div>
+      </div>`;
+    return;
+  }
+
+  // result
+  const key=topKey();
+  const R=t.results[key];
+  const url=BOOKING[key]||BOOKING.fallback;
+  stage.innerHTML=`
+    <div class="card" style="text-align:center">
+      <div class="result-emoji">${R.e}</div>
+      <div class="eyebrow">${t.resultEyebrow}</div>
+      <div class="result-type">${R.t}</div>
+      <p class="result-desc">${R.d}</p>
+      <div class="reco">
+        <div class="label">${t.recoLabel}</div>
+        <div class="svc">${R.svc}</div>
+        <div class="pair">${R.pair}</div>
+      </div>
+      <div class="stack" style="text-align:left">
+        <a class="btn btn-gold" href="${url}" target="_blank" rel="noopener">${t.book}</a>
+        <button class="btn btn-ghost" onclick="restart()">${t.retake}</button>
+      </div>
+
+      <div class="capture" id="capture">
+        <p>${t.captureP}</p>
+        <input class="field" id="capName" type="text" placeholder="${t.name}" autocomplete="name">
+        <input class="field" id="capContact" type="text" placeholder="${t.contact}" autocomplete="email">
+        <button class="btn btn-primary" onclick="submitLead('${key}')">${t.send}</button>
+      </div>
+    </div>`;
+}
+
+function begin(){ scores={dry:0,combo:0,oily:0,sensitive:0}; step=0; render(); }
+function answer(k){ scores[k]++; step++; render(); }
+function restart(){ step=-1; scores={dry:0,combo:0,oily:0,sensitive:0}; render(); }
+
+function topKey(){
+  // argmax; stable tie-break by fixed order
+  const order=["dry","combo","oily","sensitive"];
+  return order.reduce((best,k)=> scores[k]>scores[best]?k:best, order[0]);
+}
+
+function submitLead(key){
+  const name=(document.getElementById("capName")||{}).value||"";
+  const contact=(document.getElementById("capContact")||{}).value||"";
+  if(!contact.trim()){ document.getElementById("capContact").focus(); return; }
+
+  /* Submit to Google Form via no-cors POST.
+     Google Forms blocks CORS, so the response is opaque — that's fine,
+     we don't read it. The submission is still recorded in the linked Sheet.
+     We show our own confirmation immediately. */
+  const fd=new FormData();
+  fd.append(GFORM.entries.name,     name);
+  fd.append(GFORM.entries.contact,  contact);
+  fd.append(GFORM.entries.skinType, key);
+  fd.append(GFORM.entries.lang,     lang);
+
+  fetch(`https://docs.google.com/forms/d/e/${GFORM.formId}/formResponse`,{
+    method:"POST",
+    mode:"no-cors",
+    body:fd
+  }).catch(()=>{ /* opaque response / network — non-fatal, lead UX unchanged */ });
+
+  document.getElementById("capture").innerHTML =
+    `<div class="thanks">${T[lang].thanks}</div>`;
+}
+
+/* boot */
+applyStatic();
+render();
+</script>
+</body>
+</html>
