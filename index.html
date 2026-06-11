@@ -120,13 +120,50 @@
 
   /* Hero */
   .hero{padding:64px 0 52px;text-align:center;position:relative}
+  /* Gold ring — transparent-bg artwork so the glow/shine follow the actual strokes */
   .hero::before{
     content:'';
     position:absolute;top:50%;left:50%;
     transform:translate(-50%,-50%);
     width:400px;height:400px;max-width:96%;
-    background:url('hero-ring.png') center/contain no-repeat;
-    z-index:0;pointer-events:none;opacity:.5;
+    background:url('hero-ring-glow.png') center/contain no-repeat;
+    z-index:0;pointer-events:none;opacity:.9;
+    /* soft static warm-gold bloom hugging the brush strokes (drop-shadow follows alpha) */
+    filter:drop-shadow(0 0 5px rgba(196,161,78,.45)) drop-shadow(0 0 14px rgba(212,175,55,.35));
+  }
+  /* A bright glint that travels ALONG the ring — starts at 4 o'clock, laps clockwise.
+     A conic-gradient comet (head + trailing tail) is rotated via the --ringA angle and
+     masked to the brush strokes, so the highlight runs around the actual ring line. */
+  @property --ringA{ syntax:'<angle>'; inherits:false; initial-value:120deg; }
+  .hero::after{
+    content:'';
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:400px;height:400px;max-width:96%;
+    z-index:0;pointer-events:none;
+    -webkit-mask:url('hero-ring-glow.png') center/contain no-repeat;
+            mask:url('hero-ring-glow.png') center/contain no-repeat;
+    /* head at 0deg (= the --ringA direction), short fade ahead, faint tail trailing behind */
+    background:conic-gradient(from var(--ringA),
+      rgba(255,252,244,.98) 0deg,
+      rgba(255,250,235,0)   22deg,
+      rgba(255,250,235,0)   322deg,
+      rgba(255,250,235,.16) 350deg,
+      rgba(255,252,244,.98) 360deg);
+    mix-blend-mode:screen;
+    opacity:0;
+    animation:ringLap 4s linear infinite;
+  }
+  /* one quick clockwise lap from 4 o'clock (120deg → +360), then a brief rest — a single sparkle */
+  @keyframes ringLap{
+    0%   { --ringA:120deg; opacity:0; animation-timing-function:cubic-bezier(.25,.6,.2,1) }
+    6%   { opacity:1 }
+    30%  { --ringA:480deg; opacity:1 }
+    40%  { opacity:0 }
+    100% { --ringA:480deg; opacity:0 }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero::after{display:none}
   }
   .hero > *{position:relative;z-index:1}
   .eyebrow{
