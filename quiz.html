@@ -332,8 +332,11 @@ let scores = {dry:0,combo:0,oily:0,sensitive:0};
 const stage = document.getElementById("stage");
 const progressEl = document.getElementById("progress");
 
-/* auto-detect Mongolian browsers (manual choice still wins) */
+/* initial language: ?lang= from the embedding page wins; else auto-detect Mongolian browsers.
+   (the in-quiz EN/MN buttons still override afterwards) */
 (function(){
+  const p=new URLSearchParams(location.search).get("lang");
+  if(p==="mn"||p==="en"){ lang=p; return; }
   const langs=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();
   if(langs.includes("mn")) lang="mn";
 })();
@@ -457,9 +460,8 @@ function submitLead(key){
     `<div class="thanks">${T[lang].thanks}</div>`;
 }
 
-/* boot */
-applyStatic();
-render();
+/* boot — setLang syncs the EN/MN button highlight to the detected language too */
+setLang(lang);
 </script>
 </body>
 </html>

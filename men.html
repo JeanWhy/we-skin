@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>WE SKIN — Эрэгтэйчүүдийн арьс арчилгаа, Chatswood</title>
+<meta name="description" content="Барилга, гадаа ажил арьсанд юу хийдэг вэ? Энгийн 3 алхам + танд тохирох эхлэлийг олох 3 асуулт. Монголоор үйлчилнэ — WE SKIN, Chatswood." />
+<meta name="theme-color" content="#ffffff" />
+
+<!-- ⚠️ NOTE: All Mongolian copy on this page is a DRAFT — Oko must review before launch. -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#5a5a5a;
+    --ink-faint:#9a9a9a;
+    --line:#ececec;
+    --bg:#ffffff;
+    --gold:#9c7c2f;
+    --gold-soft:#c4a14e;
+    --cream:#fbf7ee;
+    --max:480px;
+    --pad:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  html,body{background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-weight:300;line-height:1.6;font-size:15px;letter-spacing:.01em;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+  header{
+    position:sticky;top:0;z-index:10;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(10px);
+    -webkit-backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .top{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+  .brand{
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;letter-spacing:.32em;font-weight:500;
+    text-decoration:none;color:var(--ink);flex-shrink:0;
+  }
+  .lang{
+    display:flex;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;
+    font-size:10px;letter-spacing:.1em;flex-shrink:0;
+  }
+  .lang button{
+    background:transparent;border:0;padding:5px 8px;cursor:pointer;
+    color:var(--ink-faint);font-family:inherit;font-weight:500;
+  }
+  .lang button.on{
+    background:linear-gradient(135deg,#D4AF37 0%,#B8860B 100%);color:#fff;
+  }
+
+  .hero{padding:56px 0 40px;text-align:center}
+  .eyebrow{
+    font-size:11px;letter-spacing:.32em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:18px;font-weight:600;
+  }
+  h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:400;font-size:30px;line-height:1.2;letter-spacing:.01em;
+    margin-bottom:16px;
+  }
+  .lede{color:var(--ink-soft);font-size:14px;max-width:360px;margin:0 auto}
+
+  .sec-title{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;
+    text-align:center;margin-bottom:6px;
+  }
+  .sec-sub{
+    text-align:center;font-size:11px;letter-spacing:.24em;
+    color:var(--ink-faint);text-transform:uppercase;margin-bottom:22px;
+  }
+
+  /* damage cards */
+  .damage{padding:24px 0 8px}
+  .dmg{
+    border:1px solid var(--line);border-radius:8px;
+    padding:18px 18px 16px;margin-bottom:10px;
+  }
+  .dmg .k{
+    font-size:10px;letter-spacing:.28em;font-weight:600;
+    text-transform:uppercase;color:var(--gold);margin-bottom:6px;
+  }
+  .dmg h3{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;
+    margin-bottom:4px;
+  }
+  .dmg p{font-size:13px;color:var(--ink-soft);line-height:1.55}
+
+  /* 3 steps */
+  .steps{padding:32px 0 8px}
+  .step{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:16px 0;border-top:1px solid var(--line);
+  }
+  .step:last-of-type{border-bottom:1px solid var(--line)}
+  .step .num{
+    flex:none;width:32px;height:32px;border-radius:50%;
+    border:1px solid var(--gold-soft);color:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:16px;margin-top:2px;
+  }
+  .step h3{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;
+    margin-bottom:2px;
+  }
+  .step p{font-size:13px;color:var(--ink-soft);line-height:1.55}
+
+  /* quiz */
+  .quiz{margin:40px 0 8px;padding:26px 22px;background:var(--cream);border-radius:12px}
+  .q-count{
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:10px;font-weight:600;text-align:center;
+  }
+  .q-text{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;
+    text-align:center;margin-bottom:18px;line-height:1.3;
+  }
+  .q-opts{display:flex;flex-direction:column;gap:8px}
+  .q-opt{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:13px 16px;font-family:inherit;font-size:14px;font-weight:400;
+    color:var(--ink);cursor:pointer;text-align:left;line-height:1.45;
+    transition:border-color .15s;
+  }
+  .q-opt:hover{border-color:var(--gold-soft)}
+  .q-start{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;height:50px;border-radius:999px;border:0;cursor:pointer;
+    background:var(--ink);color:#fff;font-family:inherit;
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  }
+  .q-start:hover{opacity:.85}
+  .q-restart{
+    display:block;margin:14px auto 0;background:none;border:0;cursor:pointer;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-faint);font-family:inherit;
+  }
+  .q-restart:hover{color:var(--ink)}
+
+  /* quiz result */
+  .res-label{
+    font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:8px;font-weight:600;text-align:center;
+  }
+  .res-name{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;
+    text-align:center;margin-bottom:2px;
+  }
+  .res-price{
+    font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--ink-soft);
+    text-align:center;margin-bottom:12px;
+  }
+  .res-why{font-size:13.5px;color:var(--ink-soft);line-height:1.6;text-align:center;margin-bottom:18px}
+  .res-cta{
+    display:flex;align-items:center;justify-content:center;
+    width:100%;height:50px;border-radius:999px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+  }
+  .res-cta:hover{opacity:.85}
+  .res-cta.ghost{
+    background:#fff;color:var(--gold);border:1px solid var(--gold-soft);
+    margin-top:10px;
+  }
+
+  /* ask-first */
+  .ask{margin:44px 0 8px;text-align:center;padding:30px 22px;border:1px solid var(--gold-soft);border-radius:12px}
+  .ask h2{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:22px;
+    margin-bottom:8px;
+  }
+  .ask p{font-size:13.5px;color:var(--ink-soft);max-width:330px;margin:0 auto 18px;line-height:1.6}
+  .ask-btns{display:flex;flex-direction:column;gap:10px}
+  .ask-btn{
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    height:52px;border-radius:999px;text-decoration:none;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  }
+  .ask-btn svg{width:18px;height:18px;flex:none}
+  .ask-btn.sms{background:var(--ink);color:#fff}
+  .ask-btn.wa{background:#25D366;color:#fff}
+  .ask-btn:hover{opacity:.87}
+  .ask-note{font-size:11px;color:var(--ink-faint);margin-top:12px;letter-spacing:.04em}
+
+  /* footer */
+  footer{
+    margin-top:48px;padding:24px 0 32px;
+    border-top:1px solid var(--line);
+    text-align:center;color:var(--ink-faint);font-size:11px;letter-spacing:.12em;
+  }
+  footer .brand-sm{
+    font-family:'Cormorant Garamond',serif;
+    letter-spacing:.32em;font-size:13px;color:var(--ink);margin-bottom:8px;
+  }
+  footer a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line)}
+  footer .copyright{margin-top:12px;font-size:10px;letter-spacing:.1em}
+
+  @media (max-width:380px){
+    :root{--pad:20px}
+    h1{font-size:26px}
+  }
+  button:focus-visible, a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <a class="brand" href="index.html">WE&nbsp;SKIN</a>
+    <div class="lang" role="group" aria-label="Language">
+      <button class="on" data-lang="mn" aria-pressed="true">MN</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow" data-i18n="eyebrow">Эрэгтэйчүүдэд · Chatswood</div>
+    <h1 data-i18n="h1">Австралийн уур амьсгал ба хүнд хөдөлмөр vs. таны арьс</h1>
+    <p class="lede" data-i18n="lede">
+      Австралид барилга, ферм, гадаа төслүүд дээр ажиллах нь таны арьсыг гурван хүнд хортой хүчин зүйлд өртүүлдэг. Эдгээрийг ойлгох нь тав тух, арьсны эрүүл мэндээ эргүүлэн авах эхний алхам юм.
+    </p>
+  </section>
+
+  <!-- WHAT THE WORK DOES -->
+  <section class="damage" aria-labelledby="dmg-title">
+    <h2 id="dmg-title" class="sec-title" data-i18n="dmgTitle">Ажил арьсанд ингэж нөлөөлдөг</h2>
+    <div class="sec-sub" data-i18n="dmgSub">Гадаа ажилладаг хүн бүрт</div>
+
+    <div class="dmg">
+      <div class="k" data-i18n="d1k">Нар</div>
+      <h3 data-i18n="d1t">Австралийн нар бол дэлхийн хамгийн хүчтэйд ордог</h3>
+      <p data-i18n="d1p">Өдөр бүр нарны доор ажиллахад арьсанд толбо, пигментаци үүсч, эрт үрчлээ гарна. Малгай ганцаараа хамгаалж чадахгүй.</p>
+    </div>
+
+    <div class="dmg">
+      <div class="k" data-i18n="d2k">Хөлс + Тоос</div>
+      <h3 data-i18n="d2t">Нүх сүв бөглөрч, батга гарна</h3>
+      <p data-i18n="d2p">Хөлс, тоос, барилгын шороо хоёр хоолой нийлж арьсны нүх сүвийг бөглөнө. Үр дүн нь — батга, улайлт, харшлын тууралт.</p>
+    </div>
+
+    <div class="dmg">
+      <div class="k" data-i18n="d3k">Салхи + Хуурайшилт</div>
+      <h3 data-i18n="d3t">Арьс хатуурч, гуужина</h3>
+      <p data-i18n="d3p">Салхи, нар хоёр арьсны чийгийг авч хаяна. Арьс хатуурч, барзайж, заримдаа загатнаж эхэлнэ.</p>
+    </div>
+  </section>
+
+  <!-- 3 STEPS -->
+  <section class="steps" aria-labelledby="steps-title">
+    <h2 id="steps-title" class="sec-title" data-i18n="stTitle">Үндсэн арчилгаа — 3 алхам</h2>
+    <div class="sec-sub" data-i18n="stSub">Энгийн. Өдөрт 5 минут.</div>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <h3 data-i18n="st1t">Угаах</h3>
+        <p data-i18n="st1p">Ажлын дараа нүүрээ угаагч (cleanser)-аар угаа. Энгийн саван арьсыг улам хатаадаг тул битгий хэрэглээрэй.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <h3 data-i18n="st2t">Чийгшүүлэх</h3>
+        <p data-i18n="st2p">Угаасны дараа чийгшүүлэгч (moisturiser) түрхэнэ. Хатуурсан, гуужсан арьсыг зөөлрүүлнэ. 30 секунд л болно.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <h3 data-i18n="st3t">Нарны тос — өглөө бүр</h3>
+        <p data-i18n="st3p">SPF 50+ нарны тос бол хамгийн чухал алхам. Толбо, үрчлээ, арьсны хорт хавдрын эрсдэлээс хамгаална. Үүлтэй өдөр ч хэрэгтэй.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz" id="quiz" aria-label="Skin quiz">
+    <div id="quizBox"></div>
+  </section>
+
+  <!-- ASK FIRST -->
+  <section class="ask" id="ask">
+    <h2 data-i18n="askTitle">Захиалахаасаа өмнө асуумаар байна уу?</h2>
+    <p data-i18n="askBody">Зүгээр л бичээрэй — монголоор. Око өөрөө хариулна. Ямар ч асуулт болно, ичих юм байхгүй.</p>
+    <div class="ask-btns">
+      <a class="ask-btn sms" id="smsBtn" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span data-i18n="askSms">Мессеж бичих</span>
+      </a>
+      <a class="ask-btn wa" id="waBtn" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1.6-.7-2.6-1.3-3.6-3-.3-.5.2-.5.7-1.5.1-.2 0-.4 0-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1.2 1.2-1 2.9.1 4.3 2.1 3 4.3 4.3 7.3 5.1.7.2 1.3.3 1.7.2.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-3-.2-.3C4.4 14.9 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+        <span data-i18n="askWa">WhatsApp</span>
+      </a>
+    </div>
+    <div class="ask-note" data-i18n="askNote">Эсвэл залгаарай: 0433 521 272</div>
+  </section>
+
+  <footer>
+    <div class="brand-sm">WE&nbsp;SKIN</div>
+    <div><a href="index.html#services" data-i18n="ftMenu">Бүх үйлчилгээ үзэх</a></div>
+    <div class="copyright">© 2026 WE&nbsp;SKIN · Chatswood, NSW</div>
+  </footer>
+
+</main>
+
+<script>
+  const STUDIO_PHONE = "+61433521272";
+  const WHATSAPP_NUMBER = "61433521272";
+  const SQ = "https://book.squareup.com/appointments/ikf36klpxgjxem/location/LAC5TF3K9JNRV/services/";
+  const SERVICES = {
+    facial: { id:"ZZMFEESCOBVWMKUZGYARF6OP", price:"$90 · 60 min" },
+    acne:   { id:"I7255EP6NIBJXVC5MS5MQ75R", price:"$150 · 60–90 min" },
+    ipl:    { id:"7IJKD2K247GW66WVDOI7SRNN", price:"$250 · 60 min" }
+  };
+
+  /* ⚠️ Mongolian copy = DRAFT, needs Oko's review */
+  const I18N = {
+    mn: {
+      eyebrow:"Эрэгтэйчүүдэд · Chatswood",
+      h1:"Австралийн уур амьсгал ба хүнд хөдөлмөр vs. таны арьс",
+      lede:"Австралид барилга, ферм, гадаа төслүүд дээр ажиллах нь таны арьсыг гурван хүнд хортой хүчин зүйлд өртүүлдэг. Эдгээрийг ойлгох нь тав тух, арьсны эрүүл мэндээ эргүүлэн авах эхний алхам юм.",
+      dmgTitle:"Ажил арьсанд ингэж нөлөөлдөг",
+      dmgSub:"Гадаа ажилладаг хүн бүрт",
+      d1k:"Нар", d1t:"Австралийн нар бол дэлхийн хамгийн хүчтэйд ордог",
+      d1p:"Өдөр бүр нарны доор ажиллахад арьсанд толбо, пигментаци үүсч, эрт үрчлээ гарна. Малгай ганцаараа хамгаалж чадахгүй.",
+      d2k:"Хөлс + Тоос", d2t:"Нүх сүв бөглөрч, батга гарна",
+      d2p:"Хөлс, тоос, барилгын шороо нийлж арьсны нүх сүвийг бөглөнө. Үр дүн нь — батга, улайлт, харшлын тууралт.",
+      d3k:"Салхи + Хуурайшилт", d3t:"Арьс хатуурч, гуужина",
+      d3p:"Салхи, нар хоёр арьсны чийгийг авч хаяна. Арьс хатуурч, барзайж, заримдаа загатнаж эхэлнэ.",
+      stTitle:"Үндсэн арчилгаа — 3 алхам",
+      stSub:"Энгийн. Өдөрт 5 минут.",
+      st1t:"Угаах",
+      st1p:"Ажлын дараа нүүрээ угаагч (cleanser)-аар угаа. Энгийн саван арьсыг улам хатаадаг тул битгий хэрэглээрэй.",
+      st2t:"Чийгшүүлэх",
+      st2p:"Угаасны дараа чийгшүүлэгч (moisturiser) түрхэнэ. Хатуурсан, гуужсан арьсыг зөөлрүүлнэ. 30 секунд л болно.",
+      st3t:"Нарны тос — өглөө бүр",
+      st3p:"SPF 50+ нарны тос бол хамгийн чухал алхам. Толбо, үрчлээ, арьсны хорт хавдрын эрсдэлээс хамгаална. Үүлтэй өдөр ч хэрэгтэй.",
+      askTitle:"Захиалахаасаа өмнө асуумаар байна уу?",
+      askBody:"Зүгээр л бичээрэй — монголоор. Око өөрөө хариулна. Ямар ч асуулт болно, ичих юм байхгүй.",
+      askSms:"Мессеж бичих", askWa:"WhatsApp",
+      askNote:"Эсвэл залгаарай: 0433 521 272",
+      ftMenu:"Бүх үйлчилгээ үзэх",
+      smsBody:"Сайн байна уу, WE SKIN. Арьсныхаа талаар асуух зүйл байна.",
+      /* quiz */
+      qIntroTitle:"Хаанаас эхлэхээ мэдэхгүй байна уу?",
+      qIntroBody:"3 асуултад хариулаад танд тохирох эхлэлийг олоорой.",
+      qStart:"Эхлэх",
+      qCount:n=>"Асуулт "+n+" / 3",
+      q1:"Таны хамгийн их санаа зовдог зүйл юу вэ?",
+      q1a:[["Толбо, нарны гэмтэл","ipl"],["Батга, улайлт","acne"],["Хуурай, хатуу арьс","facial"],["Сайн мэдэхгүй","facial"]],
+      q2:"Арьс тань ихэвчлэн ямар байдаг вэ?",
+      q2a:[["Тослог","oily"],["Хуурай","dry"],["Хэвийн","normal"],["Амархан улайдаг / мэдрэмтгий","sensitive"]],
+      q3:"Урьд нь арьсны мэргэжлийн үйлчилгээ авч байсан уу?",
+      q3a:[["Үгүй, анх удаа","first"],["Тийм, авч байсан","exp"]],
+      resLabel:"Танд тохирох эхлэл",
+      resNames:{facial:"Арьс ба Тайвшрал (60 мин)",acne:"Батга эмчилгээ",ipl:"IPL эмчилгээ"},
+      resWhy:{
+        facial:"Гүн цэвэрлэгээ + чийгшүүлэлт — анхны айлчлалд хамгийн тохиромжтой. Око арьсыг тань үнэлж, дараа нь юу хэрэгтэйг монголоор тайлбарлаж өгнө.",
+        acne:"Батга, үрэвсэлд чиглэсэн эмчилгээ. Нүх сүвийг цэвэрлэж, улайлтыг намдаана. Око арьсыг тань үзээд тохирох арчилгааг зөвлөнө.",
+        ipl:"Толбо, нарны гэмтэлд хамгийн үр дүнтэй нь IPL. Гэхдээ эхлээд Око арьсыг тань үзэж, IPL танд тохирох эсэхийг үнэлнэ.",
+        iplFirst:"Толбонд IPL үр дүнтэй ч, анх удаа бол эхлээд энгийн арчилгаагаар эхэлж, Око арьсыг тань үнэлээд IPL хэрэгтэй эсэхийг хэлж өгнө. Ингэвэл илүүдэл мөнгө үрэхгүй."
+      },
+      resBook:"Захиалах",
+      resAsk:"Эхлээд асуух",
+      resRestart:"Дахин эхлэх"
+    },
+    en: {
+      eyebrow:"For Men · Chatswood",
+      h1:"The Australian Climate &amp; Hard Labor Vs. Your Skin",
+      lede:"Working on construction sites, farms, or outdoor projects in Australia subjects your skin to three severe destructive factors. Understanding these is the first step to reclaiming comfort and skin health.",
+      dmgTitle:"What the work does to skin",
+      dmgSub:"For everyone working outdoors",
+      d1k:"Sun", d1t:"Australian sun is among the harshest on earth",
+      d1p:"Working under it daily causes dark spots, pigmentation and early wrinkles. A hat alone won't protect you.",
+      d2k:"Sweat + Dust", d2t:"Pores clog, breakouts follow",
+      d2p:"Sweat mixes with site dust and blocks your pores. The result — breakouts, redness, irritation.",
+      d3k:"Wind + Dryness", d3t:"Skin gets rough and flaky",
+      d3p:"Wind and sun strip moisture from your skin. It hardens, roughens, and sometimes starts to itch.",
+      stTitle:"Basic care — 3 steps",
+      stSub:"Simple. 5 minutes a day.",
+      st1t:"Wash",
+      st1p:"After work, wash your face with a cleanser. Regular soap dries skin out further — skip it.",
+      st2t:"Moisturise",
+      st2p:"After washing, apply moisturiser. It softens rough, flaky skin. Takes 30 seconds.",
+      st3t:"Sunscreen — every morning",
+      st3p:"SPF 50+ is the single most important step. It protects against spots, wrinkles and skin cancer risk. Cloudy days too.",
+      askTitle:"Want to ask before you book?",
+      askBody:"Just send a message — in Mongolian or English. Oko replies personally. Any question is fine.",
+      askSms:"Send a text", askWa:"WhatsApp",
+      askNote:"Or call: 0433 521 272",
+      ftMenu:"See all services",
+      smsBody:"Hi WE SKIN, I have a question about my skin.",
+      /* quiz */
+      qIntroTitle:"Not sure where to start?",
+      qIntroBody:"Answer 3 questions and we'll find your starting point.",
+      qStart:"Start",
+      qCount:n=>"Question "+n+" / 3",
+      q1:"What bothers you most?",
+      q1a:[["Dark spots, sun damage","ipl"],["Breakouts, redness","acne"],["Dry, rough skin","facial"],["Not sure","facial"]],
+      q2:"How does your skin usually feel?",
+      q2a:[["Oily","oily"],["Dry","dry"],["Normal","normal"],["Easily irritated / sensitive","sensitive"]],
+      q3:"Have you had a professional skin treatment before?",
+      q3a:[["No, first time","first"],["Yes, I have","exp"]],
+      resLabel:"Your starting point",
+      resNames:{facial:"Skin & Relaxation (60 min)",acne:"Acne Treatment",ipl:"IPL Treatment"},
+      resWhy:{
+        facial:"Deep cleansing + hydration — the best first visit. Oko assesses your skin and explains what it needs next.",
+        acne:"A treatment targeting breakouts and inflammation. It clears pores and calms redness. Oko will check your skin and advise the right care.",
+        ipl:"IPL is the most effective option for spots and sun damage. Oko will assess your skin first to confirm IPL suits you.",
+        iplFirst:"IPL works well on spots, but since it's your first visit, start with a facial — Oko will assess your skin and tell you honestly whether you need IPL. No wasted money."
+      },
+      resBook:"Book now",
+      resAsk:"Ask first",
+      resRestart:"Start over"
+    }
+  };
+
+  /* ---------- language ---------- */
+  // Mongolian-first page. Use a PAGE-SPECIFIC key so a choice made on the main page
+  // never overrides this page's Mongolian default (and vice-versa).
+  let lang = 'mn';
+  try {
+    const saved = localStorage.getItem('weskin.lang.men');
+    if (saved === 'en' || saved === 'mn') lang = saved;
+  } catch(e){}
+
+  function applyLang(){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const v = I18N[lang][key];
+      if (typeof v === 'string') el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang button').forEach(b => {
+      const on = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    const smsBody = encodeURIComponent(I18N[lang].smsBody);
+    document.getElementById('smsBtn').href = "sms:" + STUDIO_PHONE.replace(/\s+/g,'') + "?&body=" + smsBody;
+    document.getElementById('waBtn').href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + smsBody;
+    renderQuiz();
+  }
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => {
+      lang = b.getAttribute('data-lang');
+      try { localStorage.setItem('weskin.lang.men', lang); } catch(e){}
+      applyLang();
+    });
+  });
+
+  /* ---------- quiz ---------- */
+  let qStep = -1;            // -1 intro, 0..2 questions, 3 result
+  let answers = {};
+  const box = document.getElementById('quizBox');
+
+  function pick(key, val){ answers[key] = val; qStep++; renderQuiz(); }
+  function begin(){ answers = {}; qStep = 0; renderQuiz(); }
+  function restart(){ qStep = -1; renderQuiz(); }
+
+  function result(){
+    // concern drives the recommendation; first-timers with sun damage start with a facial
+    let svc = answers.concern || 'facial';
+    let why = svc;
+    if (svc === 'ipl' && answers.history === 'first'){ svc = 'facial'; why = 'iplFirst'; }
+    return { svc, why };
+  }
+
+  function opts(list, key){
+    return '<div class="q-opts">' + list.map(o =>
+      `<button class="q-opt" type="button" data-k="${key}" data-v="${o[1]}">${o[0]}</button>`
+    ).join('') + '</div>';
+  }
+
+  function renderQuiz(){
+    const t = I18N[lang];
+    if (qStep === -1){
+      box.innerHTML = `
+        <div class="q-text" style="margin-bottom:8px">${t.qIntroTitle}</div>
+        <p style="text-align:center;font-size:13.5px;color:var(--ink-soft);margin-bottom:18px">${t.qIntroBody}</p>
+        <button class="q-start" type="button" id="qGo">${t.qStart}</button>`;
+      document.getElementById('qGo').addEventListener('click', begin);
+      return;
+    }
+    if (qStep <= 2){
+      const qs = [
+        { text:t.q1, list:t.q1a, key:'concern' },
+        { text:t.q2, list:t.q2a, key:'skin' },
+        { text:t.q3, list:t.q3a, key:'history' }
+      ][qStep];
+      box.innerHTML = `
+        <div class="q-count">${t.qCount(qStep+1)}</div>
+        <div class="q-text">${qs.text}</div>
+        ${opts(qs.list, qs.key)}`;
+      box.querySelectorAll('.q-opt').forEach(b =>
+        b.addEventListener('click', () => pick(b.dataset.k, b.dataset.v)));
+      return;
+    }
+    const { svc, why } = result();
+    const s = SERVICES[svc];
+    const smsBody = encodeURIComponent(I18N[lang].smsBody);
+    box.innerHTML = `
+      <div class="res-label">${t.resLabel}</div>
+      <div class="res-name">${t.resNames[svc]}</div>
+      <div class="res-price">${s.price}</div>
+      <p class="res-why">${t.resWhy[why]}</p>
+      <a class="res-cta" href="${SQ + s.id}" target="_blank" rel="noopener">${t.resBook}</a>
+      <a class="res-cta ghost" href="sms:${STUDIO_PHONE.replace(/\s+/g,'')}?&body=${smsBody}">${t.resAsk}</a>
+      <button class="q-restart" type="button" id="qRe">${t.resRestart}</button>`;
+    document.getElementById('qRe').addEventListener('click', restart);
+  }
+
+  applyLang();
+</script>
+</body>
+</html>
