@@ -1,0 +1,35 @@
+# === WE SKIN — keep internal docs & local junk out of the public repo / Vercel deploy ===
+
+# Internal business documents (proposals, meeting notes, pilot tracker, case studies …).
+# They all follow the WE-SKIN-* naming convention — keep the public Build Log, block the rest.
+WE-SKIN-*
+!WE-SKIN-Build-Log.md
+
+# Office formats are never web-deploy assets — block any that slip in under a different name
+*.docx
+*.pptx
+*.xlsx
+*.xls
+*.pages
+*.key
+*.numbers
+
+# Office / editor lock & temp files
+.~lock.*#
+~$*
+*.tmp
+
+# Internal agent notes
+AGENTS.md
+
+# Stale design variants (superseded by index.html)
+we-skin*.html
+
+# Stray source image not used by the site
+WeSkin.jpeg
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
