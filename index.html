@@ -154,13 +154,14 @@
     opacity:0;
     animation:ringLap 4s linear infinite;
   }
-  /* one quick clockwise lap from 4 o'clock (120deg → +360), then a brief rest — a single sparkle */
+  /* quick clockwise glint from 4 o'clock (120deg) up to 2 o'clock (420deg = 60deg, ~300°
+     around the bottom and up the far side), then a brief rest — a single sparkle */
   @keyframes ringLap{
     0%   { --ringA:120deg; opacity:0; animation-timing-function:cubic-bezier(.25,.6,.2,1) }
     6%   { opacity:1 }
-    30%  { --ringA:480deg; opacity:1 }
+    30%  { --ringA:420deg; opacity:1 }
     40%  { opacity:0 }
-    100% { --ringA:480deg; opacity:0 }
+    100% { --ringA:420deg; opacity:0 }
   }
   @media (prefers-reduced-motion:reduce){
     .hero::after{display:none}
